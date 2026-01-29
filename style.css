@@ -1,0 +1,15 @@
+main {
+    display: flex;
+    flex-direction: column;
+    min-height: inherit;
+}
+
+.toolBar {
+    background-color: black;
+    color: white;
+}
+
+.stageContainer {
+    background-color: coral;
+    flex: 1;
+}
