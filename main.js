@@ -1,25 +1,49 @@
+//// FIND ELEMENTS
+const stageContainer = document.getElementById("stage-container");
+
+//// INIT VARIABLES
+let stageWidth = stageContainer.offsetWidth;
+let stageHeight = stageContainer.scrollHeight;
+
 //// KONVA SETUP
 
 // first create stage
 const stage = new Konva.Stage({
     container: "konva-stage",
-    width: 500,
-    height: 500,
+    width: stageWidth,
+    height: stageHeight
+});
+
+// resize stage on container element size change
+window.addEventListener("resize", () => {
+    // find new stage container size
+    stageWidth = stageContainer.offsetWidth;
+    stageHeight = stageContainer.offsetHeight;
+    // apply to stage
+    stage.width(stageWidth);
+    stage.height(stageHeight);
+    drawCircle();
 });
 
 // then first layer
 const baseLayer = new Konva.Layer();
 
-// create circle
-const initCircle = new Konva.Circle({
-    x: stage.width() / 2,
-    y: stage.height() / 2,
-    radius: 20,
-    fill: "red"
-});
-
-// add circle to layer
-baseLayer.add(initCircle);
+drawCircle();
 
 // add layer to stage
 stage.add(baseLayer);
+
+//// DRAWING FUNCTION
+
+function drawCircle(){
+    // create circle
+    let initCircle = new Konva.Circle({
+        x: stageWidth / 2,
+        y: stageHeight / 2,
+        radius: 20,
+        fill: "red"
+    });
+
+    // add circle to layer
+    baseLayer.add(initCircle);
+}
