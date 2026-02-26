@@ -32,7 +32,7 @@ function drawCircle(){
     let initCircle = new Konva.Circle({
         x: stageWidth * Math.random(),
         y: stageHeight * Math.random(),
-        radius: 20,
+        radius: 50 * Math.random(),
         fill: circleColour
     });
 
